@@ -3,6 +3,8 @@ import processing.core.*;
 
 public class Painterbots  extends PApplet
 {
+	Bot[] bots = new Bot[4];
+	
 	int gridSize = 10;
 	int[][] drawGrid = new int[gridSize][gridSize];
 	int bgColour = color(100, 100, 200);
@@ -44,5 +46,11 @@ public class Painterbots  extends PApplet
 			x = gridStartx;
 			y += gridBox;
 		}//end outer for()
+		
+		for (int i = 0; i < bots.length; i++)
+		{
+			bots[i].move();
+			bots[i].display();
+		}
 	}//end draw()
 }//end Painterbots class
