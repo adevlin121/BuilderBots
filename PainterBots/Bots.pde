@@ -32,4 +32,6 @@ class Bot
   {
     x += speed;
   }
+  
+  //testing
 }//end Bot
