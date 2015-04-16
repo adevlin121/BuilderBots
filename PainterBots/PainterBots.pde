@@ -34,6 +34,8 @@ void setup()
   }//end outer for()
 }//end setup()
 
+//testing
+
 void draw()
 {
   background(bgColour);
