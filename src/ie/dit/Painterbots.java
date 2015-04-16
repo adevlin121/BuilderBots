@@ -1,4 +1,4 @@
-package ie.dit;
+//package ie.dit;
 import processing.core.*;
 
 public class Painterbots  extends PApplet
@@ -13,6 +13,11 @@ public class Painterbots  extends PApplet
 	int gridBox = h/gridSize;
 	int gridStartx = w/6;
 	int colourBox = w/12;
+	int leftColourX = gridStartx/4;
+	int rightColourX = gridStartx + (gridBox * gridSize) + leftColourX;
+	int colourY1 = leftColourX;
+	int colourY2 = (colourY1 + colourBox) * 2;
+	int colourY3 = ((colourY2 - colourY1) * 2) + colourY1;
 	
 	//setting up colours
 	int bgColour = color(100, 100, 200);
@@ -34,7 +39,7 @@ public class Painterbots  extends PApplet
 		{
 			for(int j=0; j<gridSize; j++)
 			{
-				drawGrid[i][j] = 1;
+				drawGrid[i][j] = 0;
 			}//end inner for()
 		}//end outer for()
 	}//end setup()
@@ -67,27 +72,27 @@ public class Painterbots  extends PApplet
 					{
 						fill(green);
 						stroke(rectStroke);
-					}//end inner if()
+					}//end inner else if()
 					else if(drawGrid[i][j] == 3)
 					{
 						fill(blue);
 						stroke(rectStroke);
-					}//end inner if()
+					}//end inner else if()
 					else if(drawGrid[i][j] == 4)
 					{
 						fill(yellow);
 						stroke(rectStroke);
-					}//end inner if()
+					}//end inner else if()
 					else if(drawGrid[i][j] == 5)
 					{
 						fill(pink);
 						stroke(rectStroke);
-					}//end inner if()
+					}//end inner else if()
 					else if(drawGrid[i][j] == 6)
 					{
 						fill(orange);
 						stroke(rectStroke);
-					}//end inner if()
+					}//end inner else if()
 				}//end else
 				rect(x, y, gridBox, gridBox);
 				x += gridBox;
@@ -95,6 +100,25 @@ public class Painterbots  extends PApplet
 			x = gridStartx;
 			y += gridBox;
 		}//end outer for()
+		
+		//drawing colour selectors
+		fill(red);
+		rect(leftColourX, colourY1, colourBox, colourBox);
+		
+		fill(green);
+		rect(leftColourX, colourY2, colourBox, colourBox);
+		
+		fill(blue);
+		rect(leftColourX, colourY3, colourBox, colourBox);
+		
+		fill(yellow);
+		rect(rightColourX, colourY1, colourBox, colourBox);
+		
+		fill(pink);
+		rect(rightColourX, colourY2, colourBox, colourBox);
+		
+		fill(orange);
+		rect(rightColourX, colourY3, colourBox, colourBox);
 		
 		/*
 		for (int i = 0; i < bots.length; i++)
