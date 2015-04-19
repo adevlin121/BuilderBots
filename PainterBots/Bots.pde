@@ -6,10 +6,8 @@ class Bot
   int colour = color(100, 100, 100);
   int w;
   int h;
-  PApplet parent;
   
-  //struct of bot
-  Bot(PApplet p)
+  /*
   {
     parent = p;    
     x = 0; //horizontal of 0
@@ -18,13 +16,14 @@ class Bot
     h = 5;
     speed = parent.random(1, 10); //speed is a random number between 1 and 10
   }
+  */
   
   //draw bot
   void display()
   {
-    parent.fill(colour);
-    parent.noStroke();
-    parent.ellipse(x, y, w, h);
+    fill(colour);
+    noStroke();
+    ellipse(x, y, w, h);
   }
   
   //move bot
@@ -32,6 +31,4 @@ class Bot
   {
     x += speed;
   }
-  
-  //testing
 }//end Bot
