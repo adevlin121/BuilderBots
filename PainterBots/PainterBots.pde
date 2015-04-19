@@ -1,4 +1,5 @@
-//Bot[] bots = new Bot[4];
+Bot[] bots = new Bot[10];
+ArrayList <Brick> bricks;
 
 int gridSize = 20;
 int[][] canvas = new int[gridSize][gridSize];
@@ -34,6 +35,12 @@ int brush = 0;
 boolean activeBots = false;
 void setup()
 {
+  for (int i = 0; i < bots.length; i++)
+  {
+    bots[i] = new Bot(color(255, 234, 29), 30 + 10*(i), 670, 0);
+  }
+  bullets = new ArrayList();
+  
   size(w,h);
   
   //Initializing grid 2d array to be all 0's
@@ -127,13 +134,12 @@ void draw()
     //code here for bots doing things
   }
   
-  /*
   for (int i = 0; i < bots.length; i++)
   {
     bots[i].move();
     bots[i].display();
   }
-  */
+  
 }//end draw()
 
 void mouseClicked()
