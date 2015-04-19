@@ -1,4 +1,4 @@
-class Brick
+class Brick extends Object
 {
   color c;
   float xpos;
@@ -7,11 +7,8 @@ class Brick
   
   //struct of brick
   Brick(color tempC, float tempXpos, float tempYpos, float tempSpeed)
-  { 
-    c = tempC;
-    xpos = tempXpos;
-    ypos = tempYpos;
-    speed = tempSpeed;
+  {
+    super(tempC, tempXpos, tempYpos, tempSpeed);
   }
   
   //draw brick

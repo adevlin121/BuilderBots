@@ -1,17 +1,10 @@
-class Bot
+class Bot extends Object
 {
-  color c;
-  float xpos;
-  float ypos;
-  float speed;
   
   //struct of bot
   Bot(color tempC, float tempXpos, float tempYpos, float tempSpeed)
-  { 
-    c = tempC;
-    xpos = tempXpos;
-    ypos = tempYpos;
-    speed = tempSpeed;
+  {
+    super(tempC, tempXpos, tempYpos, tempSpeed);
   }
   
   //draw bot
@@ -25,7 +18,8 @@ class Bot
   //move bot
   void move()
   {
-    //check user drawing
+    //each bot is initally assigned a grid number, starting from bottom left
+    //if bot has "completed" grid number, is assigned next grid number in the grid
     //create the user drawing on a new array
     //"bottom" of array up
     //bricks must be connected another brick in order to build

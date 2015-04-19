@@ -1,5 +1,5 @@
 Bot[] bots = new Bot[10];
-ArrayList <Brick> bricks;
+ArrayList <Object> bricks;
 
 int gridSize = 20;
 int[][] drawGrid = new int[gridSize][gridSize];
@@ -27,7 +27,7 @@ void setup()
   {
     bots[i] = new Bot(color(255, 234, 29), 30 + 10*(i), 670, 0);
   }
-  bullets = new ArrayList();
+  bricks = new ArrayList<Object>();
   
   size(w,h);
   
