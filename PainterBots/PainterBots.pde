@@ -1,4 +1,5 @@
 Bot[] bots = new Bot[10];
+ArrayList <Brick> bricks;
 
 int gridSize = 20;
 int[][] drawGrid = new int[gridSize][gridSize];
@@ -24,8 +25,9 @@ void setup()
 {
   for (int i = 0; i < bots.length; i++)
   {
-    bots[i] = new Bot(color(255, 0, 0), 0, 0, 2);
+    bots[i] = new Bot(color(255, 234, 29), 30 + 10*(i), 670, 0);
   }
+  bullets = new ArrayList();
   
   size(w,h);
   
@@ -96,18 +98,11 @@ void draw()
     y += gridBox;
   }//end outer for()
   
-  myFirstBot.move();
-  myFirstBot.display();
-  
-  mySecondBot.move();
-  mySecondBot.display();
-  
-  /*
   for (int i = 0; i < bots.length; i++)
   {
     bots[i].move();
     bots[i].display();
   }
-  */
+  
 }//end draw()
 

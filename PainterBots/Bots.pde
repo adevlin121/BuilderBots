@@ -25,8 +25,10 @@ class Bot
   //move bot
   void move()
   {
-    xpos = xpos + speed;
-    ypos = ypos + speed;
+    //check user drawing
+    //create the user drawing on a new array
+    //"bottom" of array up
+    //bricks must be connected another brick in order to build
   }
   
   //testing
