@@ -6,6 +6,7 @@ class Bot extends Object
   {
     super(tempC, tempXpos, tempYpos, tempSpeed);
   }
+  */
   
   //draw bot
   void display()
@@ -24,6 +25,4 @@ class Bot extends Object
     //"bottom" of array up
     //bricks must be connected another brick in order to build
   }
-  
-  //testing
 }//end Bot
