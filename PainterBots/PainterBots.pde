@@ -1,4 +1,4 @@
-//Bot[] bots = new Bot[4];
+Bot[] bots = new Bot[10];
 
 int gridSize = 20;
 int[][] drawGrid = new int[gridSize][gridSize];
@@ -22,6 +22,11 @@ int orange = color(255, 128, 0);
 
 void setup()
 {
+  for (int i = 0; i < bots.length; i++)
+  {
+    bots[i] = new Bot(color(255, 0, 0), 0, 0, 2);
+  }
+  
   size(w,h);
   
   //Initializing grid 2d array to be all 0's
@@ -90,6 +95,12 @@ void draw()
     x = gridStartx;
     y += gridBox;
   }//end outer for()
+  
+  myFirstBot.move();
+  myFirstBot.display();
+  
+  mySecondBot.move();
+  mySecondBot.display();
   
   /*
   for (int i = 0; i < bots.length; i++)
