@@ -1,13 +1,17 @@
 //Bot[] bots = new Bot[4];
 
 int gridSize = 20;
-int[][] drawGrid = new int[gridSize][gridSize];
+int[][] canvas = new int[gridSize][gridSize];
 
 int w = 1200;
 int h = 800;
+//size of each of the grid boxes
 int gridBox = h/gridSize;
+//where the grid starts to be drawn on screen
 int gridStartx = w/6;
 int colourBox = w/12;
+
+
 
 //setting up colours
 int bgColour = color(100, 100, 200);
@@ -20,6 +24,9 @@ int yellow = color(255, 255, 0);
 int pink = color(255, 0, 127);
 int orange = color(255, 128, 0);
 
+//variable for the stroke colour of the brush
+int brush = 0;
+
 void setup()
 {
   size(w,h);
@@ -29,7 +36,7 @@ void setup()
   {
     for(int j=0; j<gridSize; j++)
     {
-      drawGrid[i][j] = 1;
+      canvas[i][j] = 0;
     }//end inner for()
   }//end outer for()
 }//end setup()
@@ -45,9 +52,8 @@ void draw()
   {
     for(int j=0; j<gridSize; j++)
     {
-      
       //this is where the colour setting is detected from the grid
-      if(drawGrid[i][j] == 0)
+      if(canvas[i][j] == 0)
       {
         fill(rectFill);
         stroke(rectStroke);
@@ -55,32 +61,32 @@ void draw()
       
       else
       {
-        if(drawGrid[i][j] == 1)
+        if(canvas[i][j] == 1)
         {
           fill(red);
           stroke(rectStroke);
         }//end inner if()
-        else if(drawGrid[i][j] == 2)
+        else if(canvas[i][j] == 2)
         {
           fill(green);
           stroke(rectStroke);
         }//end inner if()
-        else if(drawGrid[i][j] == 3)
+        else if(canvas[i][j] == 3)
         {
           fill(blue);
           stroke(rectStroke);
         }//end inner if()
-        else if(drawGrid[i][j] == 4)
+        else if(canvas[i][j] == 4)
         {
           fill(yellow);
           stroke(rectStroke);
         }//end inner if()
-        else if(drawGrid[i][j] == 5)
+        else if(canvas[i][j] == 5)
         {
           fill(pink);
           stroke(rectStroke);
         }//end inner if()
-        else if(drawGrid[i][j] == 6)
+        else if(canvas[i][j] == 6)
         {
           fill(orange);
           stroke(rectStroke);
@@ -101,4 +107,25 @@ void draw()
   }
   */
 }//end draw()
+
+void mouseDragged()
+{
+   for(int i=0; i<gridSize; i++)
+   {
+     for(int j=0; j<gridSize; j++)
+     {
+       //if statements to detect where the mouse is to paint on the picture canvas
+       if(mouseX > gridStartx && mouseX < gridStartx + (gridSize * gridBox))
+       {
+         if(mouseX > gridStartx + (gridBox * i) && mouseX < gridStartx + (gridBox * (i+1)))
+         {
+           if(mouseY > gridBox * j && mouseY < gridBox * (j+1))
+           {
+             canvas[j][i] = brush;
+           }
+         }
+       }//end outer if()
+     }//end inner for()
+   }//end outer for()
+}//end mousePressed()
 
