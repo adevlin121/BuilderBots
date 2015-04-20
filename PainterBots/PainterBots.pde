@@ -32,6 +32,24 @@ int yellow = color(255, 255, 0);
 int pink = color(255, 0, 127);
 int orange = color(255, 128, 0);
 
+//destinations for the colours
+int redX = colourStartX1 + (colourBox/2);
+int redY = colourStartY1 + (colourBox/2);
+int blueX = colourStartX1 + (colourBox/2);
+int blueY = colourStartY2 + (colourBox/2);
+int greenX = colourStartX1 + (colourBox/2);
+int greenY = colourStartY3 + (colourBox/2);
+int yellowX = colourStartX2 + (colourBox/2);
+int yellowY = colourStartY1 + (colourBox/2);
+int pinkX = colourStartX2 + (colourBox/2);
+int pinkY = colourStartY2 + (colourBox/2);
+int orangeX = colourStartX2 + (colourBox/2);
+int orangeY = colourStartY3 + (colourBox/2);
+
+//destination of the drawing for the bots to reference
+int refX = w/40;
+int refY = colourStartX1*11;
+
 //variable for the stroke colour of the brush
 int brush = 0;
 //variable to differentiate between user painting and bot building
@@ -40,7 +58,7 @@ void setup()
 {
   for (int i = 0; i < bots.length; i++)
   {
-    bots[i] = new Bot(color(255, 234, 29), 30 + 10*(i), 670, 0);
+    bots[i] = new Bot(color(0), 30 + 10*(i), colourStartX1 * 11, 5);
   }
   bricks = new ArrayList<Object>();
   
@@ -80,7 +98,12 @@ void draw()
   //drawing the erase and build buttons
   fill(rectFill);
   rect(buildButtonX, buildButtonY, colourBox, colourBox);
-  text("Build", buildButtonX, buildButtonY);
+  fill(0);
+  text("Build", buildButtonX + (colourBox/3), buildButtonY + (colourBox/2));
+  fill(rectFill);
+  rect(eraseButtonX, buildButtonY, colourBox, colourBox);
+  fill(0);
+  text("Erase", eraseButtonX + (colourBox/3), buildButtonY + (colourBox/2));
   
   if(!activeBots)
   {
@@ -139,13 +162,11 @@ void draw()
   
   else if(activeBots)
   {
-    //code here for bots doing things
-  }
-  
-  for (int i = 0; i < bots.length; i++)
-  {
-    bots[i].move();
-    bots[i].display();
+    for (int i = 0; i < bots.length; i++)
+    {
+      bots[i].move();
+      bots[i].display();
+    }
   }
   
 }//end draw()
@@ -159,14 +180,20 @@ void mouseClicked()
     {
       brush = 1;
     }//end if()
-    if(mouseY > colourStartY2 && mouseY < colourStartY2 + colourBox)
+    else if(mouseY > colourStartY2 && mouseY < colourStartY2 + colourBox)
     {
       brush = 2;
     }//end if()
-    if(mouseY > colourStartY3 && mouseY < colourStartY3 + colourBox)
+    else if(mouseY > colourStartY3 && mouseY < colourStartY3 + colourBox)
     {
       brush = 3;
     }//end if()
+    else if(mouseY > buildButtonY && mouseY < buildButtonY + colourBox)
+    {
+      //make robots do things
+      println("make do things");
+      activeBots = true;
+    }
   }//end outer if()
   
   else if(mouseX > colourStartX2 && mouseX < colourStartX2 + colourBox)
@@ -175,14 +202,18 @@ void mouseClicked()
     {
       brush = 4;
     }//end if()
-    if(mouseY > colourStartY2 && mouseY < colourStartY2 + colourBox)
+    else if(mouseY > colourStartY2 && mouseY < colourStartY2 + colourBox)
     {
       brush = 5;
     }//end if()
-    if(mouseY > colourStartY3 && mouseY < colourStartY3 + colourBox)
+    else if(mouseY > colourStartY3 && mouseY < colourStartY3 + colourBox)
     {
       brush = 6;
     }//end if()
+    else if(mouseY > buildButtonY && mouseY < buildButtonY + colourBox)
+    {
+      brush = 0;
+    }
   }
   
   //nested for loops to populate the canvas array
@@ -219,8 +250,8 @@ void mouseDragged()
            if(mouseY > gridBox * j && mouseY < gridBox * (j+1))
            {
              canvas[j][i] = brush;
-           }
-         }
+           }//end inner if()
+         }//end outer if(
        }//end outer if()
      }//end inner for()
    }//end outer for()
