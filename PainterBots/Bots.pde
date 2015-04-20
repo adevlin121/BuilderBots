@@ -6,7 +6,6 @@ class Bot extends Object
   {
     super(tempC, tempXpos, tempYpos, tempSpeed);
   }
-  */
   
   //draw bot
   void display()

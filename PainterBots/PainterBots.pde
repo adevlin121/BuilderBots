@@ -17,6 +17,9 @@ int colourStartX2 = colourStartX1 * 21;
 int colourStartY1 = colourStartX1;
 int colourStartY2 = colourStartX1 * 7;
 int colourStartY3 = colourStartX1 * 13;
+int buildButtonX = w/24;
+int eraseButtonX = colourStartX2;
+int buildButtonY = colourStartX1 * 4;
 
 //setting up colours
 int bgColour = color(100, 100, 200);
@@ -73,6 +76,11 @@ void draw()
   rect(colourStartX2, colourStartY2, colourBox, colourBox);
   fill(orange);
   rect(colourStartX2, colourStartY3, colourBox, colourBox);
+  
+  //drawing the erase and build buttons
+  fill(rectFill);
+  rect(buildButtonX, buildButtonY, colourBox, colourBox);
+  text("Build", buildButtonX, buildButtonY);
   
   if(!activeBots)
   {
