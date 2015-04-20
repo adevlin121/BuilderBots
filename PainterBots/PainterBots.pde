@@ -3,6 +3,7 @@ ArrayList <Object> bricks;
 
 int gridSize = 20;
 int[][] canvas = new int[gridSize][gridSize];
+int[][] building = new int[gridSize][gridSize];
 
 int w = 1200;
 int h = 800;
@@ -162,13 +163,58 @@ void draw()
   
   else if(activeBots)
   {
+    
+    
+    for(int i=0; i<gridSize; i++)
+    {
+      for(int j=0; j<gridSize; j++)
+      {
+        noStroke();
+        if(building[i][j] == 0)
+        {
+          noFill();
+        }//end if()
+        
+        else
+        {
+          if(building[i][j] == 1)
+          {
+            fill(red);
+          }//end inner if()
+          else if(building[i][j] == 2)
+          {
+            fill(blue);
+          }//end inner if()
+          else if(building[i][j] == 3)
+          {
+            fill(green);
+          }//end inner if()
+          else if(building[i][j] == 4)
+          {
+            fill(yellow);
+          }//end inner if()
+          else if(building[i][j] == 5)
+          {
+            fill(pink);
+          }//end inner if()
+          else if(building[i][j] == 6)
+          {
+            fill(orange);
+          }//end inner if()
+        }//end else
+        rect(x, y, gridBox, gridBox);
+        x += gridBox;
+      }//end inner for()
+      x = gridStartx;
+      y += gridBox;
+    }//end outer for()
+    
     for (int i = 0; i < bots.length; i++)
     {
       bots[i].move();
       bots[i].display();
     }
-  }
-  
+  }//end if()
 }//end draw()
 
 void mouseClicked()
